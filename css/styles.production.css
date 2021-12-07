@@ -1,0 +1,72 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+:root {
+  --main-bg-color: #202328;
+  --ff: 'Ubuntu', sans-serif;
+  --fs-weight-bold: 700;
+  --ff-weight-normal: 500;
+  --ff-weight-tin: 400;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  font-family: var(--ff);
+  color: white;
+}
+
+h1 {
+  font-weight: var(--fs-weight-bold);
+}
+
+h2 {
+  font-weight: var(--fs-weight-bold);
+}
+
+h3 {
+  font-weight: var(--fs-weight-bold);
+}
+
+p {
+  font-weight: var(--fs-weight-normal);
+}
+
+a {
+  color: white;
+}
+
+.page-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  max-width: 100%;
+}
+
+.page-profile__title {
+  margin-top: 120px;
+}
+
+.page-profile__portrait {
+  max-width: 400px;
+}
+
+@media all and (max-width: 500px){}
+
+@media all and (min-width: 500px) and (max-width: 750px){}
+
+@media all and (max-width: 750px){}
