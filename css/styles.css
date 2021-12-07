@@ -1,0 +1,154 @@
+:root {
+  --main-bg-color: #202328;
+  --font-s-color: #ff6666;
+  --ff: 'Ubuntu', sans-serif;
+  --fs-weight-bold: 700;
+  --ff-weight-normal: 500;
+  --ff-weight-tin: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  font-family: var(--ff);
+  color: white;
+}
+
+h1 {
+  font-weight: var(--fs-weight-bold);
+}
+
+h2 {
+  font-weight: var(--fs-weight-bold);
+}
+
+h3 {
+  font-weight: var(--fs-weight-bold);
+}
+
+p {
+  font-weight: var(--fs-weight-normal);
+  color: var(--font-s-color);
+}
+
+a {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+.button-index:hover,
+.button-style:hover,
+.button-index:focus,
+.button-style:focus {
+  /* lets the mouse appear as a hand when hovering over the button */
+  cursor: pointer;
+
+  /* educes the opacity of the button to 80% */
+  opacity: 0.5;
+}
+
+.button-index {
+  text-decoration: none;
+  background-color: var(--font-s-color);
+  border: 1px;
+  border-style: solid;
+  padding: 10px;
+  transition: 0.2s opacity;
+}
+
+.button-recipes {
+  text-decoration: none;
+  background-color: inherit;
+  border: 1px;
+  border-style: solid;
+  padding: 10px;
+  transition: 0.3s opacity;
+}
+
+.page-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.page-profile__title {
+  margin-top: 120px;
+  margin-right: 200px;
+}
+
+.page-profile__portrait {
+  max-width: 400px;
+}
+
+.page-profile__button {
+  margin-top: 1px;
+}
+
+.page-recipes__header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.page-recipes__tomato {
+  max-width: 100px;
+  margin-right: 80px;
+  margin-top: 20px;
+}
+
+.page-recipes__button {
+  margin-left: 70px;
+  margin-top: 70px;
+  margin-bottom: auto;
+}
+
+/*JavaScript Elements under*/
+.button-style {
+  color: white;
+  background-color: var(--font-s-color);
+  padding: 10px;
+  border: 1px;
+  border-style: solid;
+  margin: 5px;
+  cursor: pointer;
+  transition: 0.3s opacity;
+}
+
+@supports (display: grid) {
+  .pokemon-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    list-style-type: none;
+    margin-left: 26px;
+    margin-top: 50px;
+  }
+}
+
+@media all and (max-width: 500px){
+  .page-profile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-profile__portrait {
+    max-width: 200px;
+    margin: auto;
+  }
+
+  .page-profile__title {
+    margin: auto;
+    padding-left: 10px;
+  }
+}
+
+@media all and (min-width: 500px) and (max-width: 750px){}
+
+@media all and (max-width: 750px){}
