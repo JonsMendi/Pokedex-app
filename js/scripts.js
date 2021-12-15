@@ -2,7 +2,7 @@
 That helps organizing and protecting the global variables from being affected*/
 let pokemonRepository = (function(){
   let pokemonList = [];
-  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';/*APIs Url that we use to import information through JSON*/
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';/*APIs Url that we use to import information through JSON*/
   let modalContainer = document.querySelector('#modal-container');
 
 
@@ -20,10 +20,12 @@ let pokemonRepository = (function(){
   function addListItem (pokemon) {
     let pokemonUnorderedList = document.querySelector('.pokemon-list');
     let pokemonListItem = document.createElement('li');
-
+    pokemonListItem.classList.add('group-list-item','row');
+    /*Added a few new classes according to better Bootstrap behavior*/
     let button = document.createElement('button');
     button.innerText = pokemon.name;
-    button.classList.add('button-style');
+    button.classList.add('btn','btn-outline-dark','btn-block','row','col-9','form-group', 'mx-auto', 'd-block', 'btn-modal');
+
 
     pokemonListItem.appendChild(button);
     pokemonUnorderedList.appendChild(pokemonListItem);
@@ -38,36 +40,29 @@ let pokemonRepository = (function(){
       showModal(pokemon);
     });
   }
-/*Under function showModal that creates the modal when we click*/
+/*Under function showModal updated(old one in the bottom of the page) after using the bootstrap modal using JQuery.*/
   function showModal(pokemon) {
-    modalContainer.innerHTML = '';
-    /*After we clean the HTML (UP) we create a a 'div' element with is own class 'modal'*/
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-    /*Create a cancel button*/
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'X';
-    closeButtonElement.addEventListener('click', hideModal);
-    /*Create the Title, text and Image elements*/
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = pokemon.name;
-
-    let contentElement = document.createElement('p');
-    contentElement.innerText = 'Height:' + pokemon.height;
-
-    let imageElement = document.createElement('img');
-    imageElement.src = pokemon.imageUrl;
-    /*Attach the elements in the modal and then the modal in the modalContainer that is the parentElement*/
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
-    modal.appendChild(imageElement);
-    modalContainer.appendChild(modal);
-    /*Add a new class to modalContainer that will show everything just after the click.
-    '#modal-container' will display: none. Because we just want to show all the information
-    in the modal after we click in each pokemon item.*/
-    modalContainer.classList.add('is-visible');
+    /*first we selectec the two classes*/
+    let modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+    /*Then we got them empty*/
+    modalTitle.empty();
+    modalBody.empty();
+    /*Then we choose the information that we want to display in the modal*/
+    let nameElement = $('<h1>' + pokemon.name + "</h1>");
+    let imageElementFront = $('<img class="modal-img" style="width:50%">');
+    imageElementFront.attr('src', pokemon.imageUrl);
+    let heightElement = $('<p>' + 'Height:' + ' ' + pokemon.height + '</p>');
+    let weightElement = $('<p>' + 'Weight:' + ' ' + pokemon.weight + '</p>');
+    let typesElement = $('<p>' + 'Type[s]:' + ' ' + pokemon.types + '</p>');
+    /*Then we append everything*/
+    modalTitle.append(nameElement);
+    modalBody.append(imageElementFront);
+    modalBody.append(heightElement);
+    modalBody.append(weightElement);
+    modalBody.append(typesElement);
+    /*Finaly we attache the modal to the ModalContainer*/
+    $('#modal-container').modal();
   }
   /*Under hide Modal is added to the cancelButtonElement in the showModal() and it removes
   the class 'is-visible' to hide modal again*/
@@ -123,6 +118,8 @@ let pokemonRepository = (function(){
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
+      item.weight = details.weight;
+      item.types = details.types[0].type.name;//how can I access inside of the types Array?
     }).catch(function (e) {
       console.error(e);
     });
@@ -145,6 +142,24 @@ let pokemonRepository = (function(){
 
 /*'froEach()' function under. Is a more effective already set up function to substitute the 'for' Loop*/
 pokemonRepository.loadList().then(function () {
+  /*Here starts the Search process for the navigation bar input*/
+  document.querySelector('.searchForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      let valueInput = document.querySelector('#searchInput').value;
+      document.querySelector('.pokemon-list').innerHTML = '';
+      if (valueInput === '') {
+        pokemonRepository.getAll().forEach(function (pokemon) {
+          pokemonRepository.addListItem(pokemon);
+        });
+      } else {
+        pokemonRepository.getAll().forEach(function (pokemon) {
+          if (pokemon.name.indexOf(valueInput) > -1) {
+            pokemonRepository.addListItem(pokemon);
+          }
+        });
+      }
+    });
+    /*here ends the Search process for the navigation bar input*/
   pokemonRepository.getAll().forEach(function (pokemon) {
     pokemonRepository.addListItem(pokemon);
   });
@@ -158,7 +173,7 @@ pokemonRepository.loadList().then(function () {
 
 
 
-/*---*/
+/*--Exemple of using the Filter function--*/
 /*let pokemonListFilter = pokemonRepository.getAll();*/
 /*'filter()' function under. It helps searching*/
 /*
@@ -169,7 +184,8 @@ pokemonListFilter.filter(function(pokemon){
 */
 
 
-/*---*/
+
+/*--First Array created for the initial project--*/
 /*
 let validKeyNames = ['name', 'type', 'difficulty', 'height']
 
@@ -180,7 +196,9 @@ function check (obejct) {
 document.write(pokemonRepository.add(pokemonRepository.check));
 */
 
-/*---*/
+
+
+/*--Old Loop--*/
 /*
 if(pokemon.difficulty < 5 && pokemon.difficulty > 0){ // in this section i'm saying to print all objects smaller then 5 and greater then 0.
   document.write('<p>' + pokemon.name + ' (difficulty:) ' + pokemon.difficulty + '</p>') // recipeList[i].name will print the name + '(difficulty)' will print the string + recipeList[i].difficulty will print the value of difficulty data.
@@ -189,4 +207,44 @@ if(pokemon.difficulty < 5 && pokemon.difficulty > 0){ // in this section i'm say
 }else{ // in this section i'm saying to print everything else
   document.write('<p>' + pokemon.name + ' (difficulty:) ' + pokemon.difficulty + ' - Sweeet, this one is hard! ' + '</p>')
 }
+*/
+
+
+/*Old function showModal before using Bootstrap Modal- this one create is own Modal*/
+
+/*function showModal*/
+//modalContainer.innerHTML = '';
+/*After we clean the HTML (UP) we create a a 'div' element with is own class 'modal'*/
+//let modal = document.createElement('div');
+//modal.classList.add('modal');
+/*Create a cancel button*/
+/*let closeButtonElement = document.createElement('button');
+closeButtonElement.classList.add('modal-close');
+closeButtonElement.innerText = 'X';
+closeButtonElement.addEventListener('click', hideModal);
+*/
+/*Create the Title, text and Image elements*/
+/*
+let titleElement = document.createElement('h1');
+titleElement.innerText = pokemon.name;
+
+let contentElement = document.createElement('p');
+contentElement.innerText = 'Height:' + pokemon.height;
+
+let imageElement = document.createElement('img');
+imageElement.src = pokemon.imageUrl;
+*/
+/*Attach the elements in the modal and then the modal in the modalContainer that is the parentElement*/
+/*
+modal.appendChild(closeButtonElement);
+modal.appendChild(titleElement);
+modal.appendChild(contentElement);
+modal.appendChild(imageElement);
+modalContainer.appendChild(modal);
+*/
+/*Add a new class to modalContainer that will show everything just after the click.
+'#modal-container' will display: none. Because we just want to show all the information
+in the modal after we click in each pokemon item.*/
+/*
+modalContainer.classList.add('is-visible');
 */
