@@ -1,5 +1,6 @@
 :root {
-  --main-bg-color: #202328;
+  --main-bg-color: #063852;
+  --main-bg-color-secondary: #011A27;
   --font-s-color: #ff6666;
   --ff: 'Ubuntu', sans-serif;
   --fs-weight-bold: 700;
@@ -31,44 +32,6 @@ h3 {
 
 p {
   font-weight: var(--fs-weight-normal);
-  color: var(--font-s-color);
-}
-
-a {
-  color: white;
-}
-
-a:visited {
-  color: white;
-}
-
-.button-index:hover,
-.button-style:hover,
-.button-index:focus,
-.button-style:focus {
-  /* lets the mouse appear as a hand when hovering over the button */
-  cursor: pointer;
-
-  /* educes the opacity of the button to 80% */
-  opacity: 0.5;
-}
-
-.button-index {
-  text-decoration: none;
-  background-color: var(--font-s-color);
-  border: 1px;
-  border-style: solid;
-  padding: 10px;
-  transition: 0.2s opacity;
-}
-
-.button-recipes {
-  text-decoration: none;
-  background-color: inherit;
-  border: 1px;
-  border-style: solid;
-  padding: 10px;
-  transition: 0.3s opacity;
 }
 
 .page-profile {
@@ -76,138 +39,89 @@ a:visited {
   flex-direction: row;
   justify-content: center;
   max-width: 100%;
-  margin-top: 50px;
+  padding-top: 160px;
+  padding-bottom: 40px;
 }
 
+.page-title {
+  color: #e6df44;
+}
+/*
 .page-profile__title {
-  margin-top: 120px;
+  margin-top: 150px;
   margin-right: 200px;
 }
+
 
 .page-profile__portrait {
   max-width: 300px;
   margin-top: 55px;
 }
+*/
 
-.page-profile__button {
-  margin-top: 1px;
+.navbar-bg {
+  background-color: var(--main-bg-color-secondary);
 }
 
-.page-recipes__header {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
+.modal-content {
+  background-color: white;
 }
 
-.page-pokemon__ball {
-  max-width: 100px;
-  margin-right: 80px;
-  margin-top: 40px;
+.modal-title {
+  color: var(--main-bg-color);
+  text-transform: uppercase;
 }
 
-.page-recipes__button {
-  margin-left: 70px;
-  margin-top: 70px;
-  margin-bottom: auto;
+.modal-body {
+  color: var(--main-bg-color);
 }
 
-/*JavaScript Elements under*/
-.button-style {
+.modal-img {
+  margin-left: 120px;
+}
+
+.btn-modal {
   color: white;
-  background-color: var(--font-s-color);
-  padding: 30px;
-  border: 1px;
-  border-style: solid;
-  margin: 2px;
-  cursor: pointer;
-  transition: 0.3s opacity;
-  width: 90%;
-  height: 90%;
+  border-color: white;
 }
 
-/*UNDER STARTS the showModal()*/
-
-#modal-container {
-  display: none;
-}
-/*Under the Modal after clicked*/
-#modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(1, 0, 0, 0.5);
-
-  /* to show it above other content */
-  z-index: 999;
-  /* to allow scrolling if the screen is not high enough*/
-  overflow: auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/*Under the modal window where is located the information*/
-.modal {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  background-color: rgb(58,64,73);
-  width: 30%;
-  height: 60%;
-  border: 1px;
-  border-style: solid;
-
-}
-/*Under modal close button "X"*/
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: white;
-  text-decoration: underline;
-  cursor: pointer;
+.btn-modal:hover{
+  color: var(--main-bg-color-secondary);
+  background-color: #e6df44;
 }
 
-.modal h1 {
-  margin-top: 0;
-  color: white;
-  margin-top: 10px;
+.btn-search {
+  color: #e14b56
 }
 
-.modal p {
-  margin-bottom: 0;
-  color: white;
-}
-
-.modal img {
-  width: 50%;
+.btn-search:hover {
+  color: var(--main-bg-color-secondary);
 }
 /*END OF the showModal()*/
 
 /*Under pokemon list of buttons*/
+
 @supports (display: grid) {
   .pokemon-list {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
     grid-template-rows: auto;
     align-items: center;
     list-style-type: none;
     margin-top: 50px;
     padding-top: 30px;
     padding-bottom: 30px;
-    background-color: RGB(58, 65, 73, 0.5);
+    background-color: #011A27;
     border: 1px;
     border-style: solid;
-    border-color: var(--font-s-color);
+    border-color: #e6df44;
   }
 
 
+}
+
+.page-footer {
+  margin: 50px;
 }
 
 /*Under starts media where synronization with smaller screens are maded*/
