@@ -40,9 +40,9 @@ let pokemonRepository = (function(){
       showModal(pokemon);
     });
   }
-/*Under function showModal updated(old one in the bottom of the page) after using the bootstrap modal using JQuery.*/
+  /*Under function showModal updated(old one in the bottom of the page) after appliyng the bootstrap modal we use here JQuery.*/
   function showModal(pokemon) {
-    /*first we selectec the two classes*/
+    /*first we select the two classes*/
     let modalBody = $('.modal-body');
     let modalTitle = $('.modal-title');
     /*Then we got them empty*/
@@ -115,7 +115,7 @@ let pokemonRepository = (function(){
       return response.json();
     }).then(function (details) {
       // Now we add the details to the item
-      item.imageUrl = details.sprites.front_default;
+      item.imageUrl = details.sprites.other.dream_world.front_default;
       item.height = details.height;
       item.types = details.types;
       item.weight = details.weight;
