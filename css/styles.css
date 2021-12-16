@@ -1,7 +1,7 @@
 :root {
   --main-bg-color: #063852;
   --main-bg-color-secondary: #011A27;
-  --font-s-color: #ff6666;
+  --font-s-color: #e6df44;
   --ff: 'Ubuntu', sans-serif;
   --fs-weight-bold: 700;
   --ff-weight-normal: 500;
@@ -46,18 +46,6 @@ p {
 .page-title {
   color: #e6df44;
 }
-/*
-.page-profile__title {
-  margin-top: 150px;
-  margin-right: 200px;
-}
-
-
-.page-profile__portrait {
-  max-width: 300px;
-  margin-top: 55px;
-}
-*/
 
 .navbar-bg {
   background-color: var(--main-bg-color-secondary);
@@ -67,8 +55,9 @@ p {
   background-color: white;
 }
 
-.modal-title {
-  color: var(--main-bg-color);
+.modal-header {
+  background-color: var(--font-s-color);
+  color: var(--main-bg-color-secondary);
   text-transform: uppercase;
 }
 
@@ -97,9 +86,6 @@ p {
 .btn-search:hover {
   color: var(--main-bg-color-secondary);
 }
-/*END OF the showModal()*/
-
-/*Under pokemon list of buttons*/
 
 @supports (display: grid) {
   .pokemon-list {
@@ -126,37 +112,15 @@ p {
 
 /*Under starts media where synronization with smaller screens are maded*/
 @media all and (max-width: 500px){
-  .page-profile {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .page-profile__portrait {
-    max-width: 200px;
-    margin: auto;
-    margin-top: 60px;
-  }
-
-  .page-profile__title {
-    margin: auto;
-    text-align: center;
-  }
-
   .pokemon-list {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     width: 100%;
-
   }
 
-  .button-style {
-    width: 86%;
-  }
-
-  .modal {
-    width: 70%;
-    height: 40%;
+  .modal-img {
+    margin-left: 75px;
   }
 }
 
