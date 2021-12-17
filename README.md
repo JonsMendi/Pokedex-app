@@ -1,9 +1,9 @@
 # Pokédex App.
 - This project have as an objective to create a small Pokédex Library application based on HTML, CSS and JavaScript.
 - The application fetches all information through an API.
-/assets/img/screen-base.png
+![](img/screen-base.png)
 - The application should be responsive in all devices:
-/assets/img/screen-sm.png
+![](img/screen-sm.png)
 
 ## Build
 - This application is base-build with:
