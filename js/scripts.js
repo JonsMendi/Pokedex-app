@@ -3,7 +3,7 @@ That helps organizing and protecting the global variables from being affected*/
 let pokemonRepository = (function(){
   let pokemonList = [];
   let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';/*APIs Url that we use to import information through JSON*/
-  let modalContainer = document.querySelector('#modal-container');
+
 
 
   /*the function under 'add' have a 'typeof' to make sure that the 'typeof' value input is an object, if not is rejected*/
@@ -49,7 +49,7 @@ let pokemonRepository = (function(){
     modalTitle.empty();
     modalBody.empty();
     /*Then we choose the information that we want to display in the modal*/
-    let nameElement = $('<h1>' + pokemon.name + "</h1>");
+    let nameElement = $('<h1>' + pokemon.name + '</h1>');
     let imageElementFront = $('<img class="modal-img" style="width:50%">');
     imageElementFront.attr('src', pokemon.imageUrl);
     let heightElement = $('<p>' + 'Height:' + ' ' + pokemon.height + '</p>');
