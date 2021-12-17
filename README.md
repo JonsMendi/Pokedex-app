@@ -2,7 +2,7 @@
 - This project have as an objective to create a small Pokédex Library application based on HTML, CSS and JavaScript.
 - The application fetches all information through an API.
 ![](img/screen-base-0.png)
-![](img/screen-modal.png)
+![](img/screen-modal-chermander.png)
 - The application should be responsive in all devices:
 <img src="img/screen-sm.png" width="250">
 
