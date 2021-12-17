@@ -4,7 +4,7 @@
 ![](img/screen-base-0.png)
 ![](img/screen-modal.png)
 - The application should be responsive in all devices:
-<img src="img/screen-sm.png" width="150">
+<img src="img/screen-sm.png" width="250">
 
 ## Build
 - This application is base-build with:
